@@ -1,4 +1,5 @@
 const express = require("express");
+
 const router = express.Router()
 
 //item model
@@ -16,6 +17,11 @@ router.post('/', (req, res) => {
     let { name } = req.body;
     const newItem = new Item({ name })
     newItem.save().then(item => res.json(item))
+})
+
+router.delete('/:itemId', (req, res) => {
+    Item.findById(req.params.itemId).then(item => item.remove().then(() => res.json({ item, success: true })))
+        .catch(err => res.status(404).json({ success: false }))
 })
 
 module.exports = router;
