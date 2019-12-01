@@ -6,6 +6,7 @@ const items = require('./routes/api/Items')
 const app = express();
 
 //body parser
+app.use(bodyParser.urlencoded({ extended: false, limit: "50mb" }));
 app.use(bodyParser.json());
 
 //db config
