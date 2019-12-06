@@ -1,14 +1,21 @@
-import React from 'react';
+import React from "react";
 // import './bootstrap.min.css'
-import { Button } from 'reactstrap';
-import './App.css';
-import AppNavbar from './component/AppNavbar';
+import { Button } from "reactstrap";
+import "./App.css";
+import AppNavbar from "./component/AppNavbar";
+import ShoppingList from "./component/ShoppingList";
+
+import { Provider } from "react-redux";
+import store from "./store";
 
 function App() {
   return (
-    <div className="App">
-      <AppNavbar />
-    </div>
+    <Provider store={store}>
+      <div className="App">
+        <AppNavbar />
+        <ShoppingList />
+      </div>
+    </Provider>
   );
 }
 
