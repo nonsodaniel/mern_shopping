@@ -2,7 +2,10 @@ import {
   GET_ITEMS,
   ADD_ITEM,
   DELETE_ITEM,
-  ITEMS_LOADING
+  ITEMS_LOADING,
+  ADD_CATEGORY,
+  VIEW_CATEGORY,
+  DELETE_CATEGORY
 } from "../actions/types";
 
 export const getItems = () => {
@@ -18,9 +21,29 @@ export const addItem = item => {
   };
 };
 
+export const addCategory = category => {
+  return {
+    type: ADD_CATEGORY,
+    payload: category
+  };
+};
+
+export const viewCategory = () => {
+  return {
+    type: VIEW_CATEGORY
+  };
+};
+
 export const deleteItem = id => {
   return {
     type: DELETE_ITEM,
+    payload: id
+  };
+};
+
+export const deleteCategory = id => {
+  return {
+    type: DELETE_CATEGORY,
     payload: id
   };
 };
