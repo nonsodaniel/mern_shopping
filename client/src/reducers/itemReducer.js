@@ -1,4 +1,4 @@
-import uuid from "uuid";
+// import uuid from "uuid";
 import {
   GET_ITEMS,
   ADD_ITEM,
@@ -43,7 +43,7 @@ export default function(state = initialState, action) {
     case DELETE_ITEM:
       return {
         ...state,
-        items: state.items.filter(item => item._id != action.payload)
+        items: state.items.filter(item => item._id !== action.payload)
       };
     case ADD_CATEGORY: {
       return {
@@ -55,7 +55,7 @@ export default function(state = initialState, action) {
       console.log("Action", action.payload, state.cat);
       return {
         ...state,
-        categories: state.categories.filter(cat => cat._id != action.payload)
+        categories: state.categories.filter(cat => cat._id !== action.payload)
       };
     case VIEW_CATEGORY: {
       return {

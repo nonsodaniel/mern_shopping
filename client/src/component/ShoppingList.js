@@ -21,6 +21,7 @@ class ShoppingList extends Component {
             return (
               <ListGroupItem key={items._id}>
                 <Button
+                  key={items._id}
                   className="remove-btn"
                   color="danger"
                   size="sm"
