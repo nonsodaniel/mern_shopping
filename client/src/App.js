@@ -16,7 +16,7 @@ function App() {
         <AppNavbar />
         <ItemModal />
         <ShoppingList />
-        <CategoryList />
+        {/* <CategoryList /> */}
       </div>
     </Provider>
   );

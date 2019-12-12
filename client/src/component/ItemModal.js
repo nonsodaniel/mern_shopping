@@ -27,7 +27,6 @@ class ItemModal extends Component {
   handleSubmit = e => {
     e.preventDefault();
     const newItem = {
-      id: uuid(),
       name: this.state.name
     };
     //add item action

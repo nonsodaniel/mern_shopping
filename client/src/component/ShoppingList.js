@@ -17,14 +17,14 @@ class ShoppingList extends Component {
     return (
       <Container>
         <ListGroup>
-          {items.map(({ id, name }) => {
+          {items.map(({ _id, name }) => {
             return (
-              <ListGroupItem key={items.id}>
+              <ListGroupItem key={items._id}>
                 <Button
                   className="remove-btn"
                   color="danger"
                   size="sm"
-                  onClick={this.handleDelete.bind(this, id)}
+                  onClick={this.handleDelete.bind(this, _id)}
                 >
                   X
                 </Button>
