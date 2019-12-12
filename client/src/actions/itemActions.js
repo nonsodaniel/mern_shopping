@@ -1,3 +1,5 @@
+import axios from "axios";
+
 import {
   GET_ITEMS,
   ADD_ITEM,
@@ -8,10 +10,14 @@ import {
   DELETE_CATEGORY
 } from "../actions/types";
 
-export const getItems = () => {
-  return {
-    type: GET_ITEMS
-  };
+export const getItems = () => dispatch => {
+  dispatch(setItemsLoading());
+  axios.get("/api/items").then(res =>
+    dispatch({
+      type: GET_ITEMS,
+      payload: res.data
+    })
+  );
 };
 
 export const addItem = item => {

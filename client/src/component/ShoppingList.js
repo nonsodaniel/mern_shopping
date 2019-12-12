@@ -9,15 +9,13 @@ class ShoppingList extends Component {
   componentDidMount() {
     this.props.getItems();
   }
-  handleDelete = (id) =>{
-    this.props.deleteItem(id)
-  }
+  handleDelete = id => {
+    this.props.deleteItem(id);
+  };
   render() {
     const { items } = this.props.item;
     return (
       <Container>
-       
-
         <ListGroup>
           {items.map(({ id, name }) => {
             return (
