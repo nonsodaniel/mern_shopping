@@ -1,7 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
-const items = require("./routes/api/Items");
 const path = require("path");
 
 const app = express();
@@ -10,17 +9,25 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false, limit: "50mb" }));
 app.use(bodyParser.json());
 
+//can act as body parser
+// app.use(express.json());
+
 //db config
 const Db = require("./config/keys").mongoURI;
 
 //connect to mongo
 mongoose
-  .connect(Db, { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(Db, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true
+  })
   .then(() => console.log("DB connected"))
   .catch(err => console.log(err));
 
 //use ROutes
-app.use("/api/items", items);
+app.use("/api/items", require("./routes/api/Items"));
+app.use("/api/users", require("./routes/api/Users"));
 
 // on production
 if (process.env.NODE_ENV === "production") {
