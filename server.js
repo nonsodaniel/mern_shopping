@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const path = require("path");
+const config = require("config");
 
 const app = express();
 
@@ -13,6 +14,7 @@ app.use(bodyParser.json());
 // app.use(express.json());
 
 //db config
+// const Db = config.get("mongoURI");
 const Db = require("./config/keys").mongoURI;
 
 //connect to mongo
@@ -28,6 +30,7 @@ mongoose
 //use ROutes
 app.use("/api/items", require("./routes/api/Items"));
 app.use("/api/users", require("./routes/api/Users"));
+app.use("/api/auth", require("./routes/api/auth"));
 
 // on production
 if (process.env.NODE_ENV === "production") {

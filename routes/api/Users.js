@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
+const config = require("config");
+const jwt = require("jsonwebtoken");
 //item model
 const User = require("../../models/User");
 
@@ -33,20 +35,35 @@ router.post("/", (req, res) => {
           if (err) throw err;
           newUser.password = hash;
           newUser.save().then(user => {
-            res.json({ user: { name, email, password } });
+            let { id, email } = user;
+            jwt.sign(
+              { id, email },
+              config.get("jwtSecret"),
+              { expiresIn: 3600 },
+              (err, token) => {
+                if (err) throw err;
+                res.json({
+                  token,
+                  user: {
+                    id: user.id,
+                    name: user.name,
+                    email: user.email,
+                    password: user.password
+                  }
+                });
+              }
+            );
           });
         });
       });
-
-      newUser.save().then(user => res.json(user));
     });
   }
 });
 
-router.delete("/:itemId", (req, res) => {
-  Item.findById(req.params.itemId)
-    .then(item => item.remove().then(() => res.json({ item, success: true })))
-    .catch(err => res.status(404).json({ success: false }));
-});
+// router.delete("/:itemId", (req, res) => {
+//   Item.findById(req.params.itemId)
+//     .then(item => item.remove().then(() => res.json({ item, success: true })))
+//     .catch(err => res.status(404).json({ success: false }));
+// });
 
 module.exports = router;
