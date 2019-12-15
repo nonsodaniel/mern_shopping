@@ -14,8 +14,12 @@ app.use(bodyParser.json());
 // app.use(express.json());
 
 //db config
-// const Db = config.get("mongoURI");
-const Db = require("./config/keys").mongoURI;
+let isDev = process.env.NODE_ENV !== "production";
+let localDb = "mongodb://localhost/AcadatrendsDb";
+let onlineDb = config.get("mongoURI");
+const dbInstance = isDev ? localDb : onlineDb;
+
+const Db = dbInstance;
 
 //connect to mongo
 mongoose

@@ -10,10 +10,10 @@ const User = require("../../models/User");
 //@desc     Get all public users
 //@access   Public
 router.get("/", (req, res) => {
-  res.send("Hello");
-  //   Item.find()
-  //     .sort({ date: -1 })
-  //     .then(users => res.json(users));
+  User.find()
+    .sort({ date: -1 })
+    .select("-password")
+    .then(users => res.json(users));
 });
 
 router.post("/", (req, res) => {
