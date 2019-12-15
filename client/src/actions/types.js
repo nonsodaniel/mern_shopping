@@ -5,3 +5,16 @@ export const ITEMS_LOADING = "ITEMS_LOADING";
 export const ADD_CATEGORY = "ADD_CATEGORY";
 export const VIEW_CATEGORY = "VIEW_CATEGORY";
 export const DELETE_CATEGORY = "DELETE_CATEGORY";
+
+export const USER_LOADING = "USER_LOADING";
+export const USER_LOADED = "USER_LOADED";
+export const AUTH_ERROR = "AUTH_ERROR";
+
+export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
+export const LOGIN_FAIL = "LOGIN_FAIL";
+export const LOGIOUT_SUCCESS = "LOGIOUT_SUCCESS";
+export const LOGOUT_FAIL = "LOGOUT_FAIL";
+export const REGISTER_SUCCESS = "REGISTER_SUCCESS";
+export const REGISTER_FAIL = "REGISTER_FAIL";
+export const GET_ERRORS = "GET_ERRORS";
+export const CLEAR_ERRORS = "CLEAR_ERRORS";
