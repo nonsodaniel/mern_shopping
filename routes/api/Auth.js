@@ -39,7 +39,7 @@ router.post("/", (req, res) => {
         jwt.sign(
           { id, email },
           config.get("jwtSecret"),
-          { expiresIn: 3600 },
+          { expiresIn: "2h" },
           (err, token) => {
             if (err) throw err;
             res.json({
